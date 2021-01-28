@@ -12,19 +12,19 @@ router.get('/', async function (req, res) {
     
     var result = '<rss version="2.0">';
     result += '<channel>';
-    result += '<title>CL.LV</title>';
+    result += '<title>CV.LV</title>';
     result += '<link>https://cv.lv</link>';
     result += '<description>CV.LV</description>';
     result += '<lastBuildDate>'+new Date()+'</lastBuildDate>';
     result += '<ttl>5</ttl>';
 
     for (var i = 0; i < json.vacancies.length; i++) {
-		if (json.vacancies[i].salaryTo && json.vacancies[i].salaryTo > 4000){
+		if (json.vacancies[i].salaryTo && json.vacancies[i].salaryTo >= 4000){
 			result += '<item>';
 			result += '<title><![CDATA[ ' + json.vacancies[i].positionTitle + ' ' +json.vacancies[i].salaryFrom + ' - ' + json.vacancies[i].salaryTo + ']]></title>';
 			result += '<link>https://www.cv.lv/vacancy/' + json.vacancies[i].id + '</link>';
 			result += '<pubDate>' + json.vacancies[i].publishDate + '</pubDate>';
-			result += '<description><![CDATA[ '+json.vacancies[i].employerName+'<br/> ' + json.vacancies[i].positionContent + ' ]]></description>';
+			result += '<description><![CDATA[ '+json.vacancies[i].employerName+'<br/> ' + json.vacancies[i].positionContent + ' ]]><br><a href="https://www.cv.lv/vacancy/' + json.vacancies[i].id + '">Open</a></description>';
 			result += '</item>';
 		}
     }
