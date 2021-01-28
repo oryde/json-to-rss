@@ -19,12 +19,14 @@ router.get('/', async function (req, res) {
     result += '<ttl>5</ttl>';
 
     for (var i = 0; i < json.vacancies.length; i++) {
-        result += '<item>';
-        result += '<title><![CDATA[ ' + json.vacancies[i].positionTitle + ' ]]></title>';
-        result += '<link>https://www.cv.lv/vacancy/' + json.vacancies[i].id + '</link>';
-        result += '<pubDate>' + json.vacancies[i].publishDate + '</pubDate>';
-        result += '<description><![CDATA[ ' + json.vacancies[i].positionContent + ' ]]></description>';
-        result += '</item>';
+		if (json.vacancies[i].salaryTo && json.vacancies[i].salaryTo > 4000){
+			result += '<item>';
+			result += '<title><![CDATA[ ' + json.vacancies[i].positionTitle + ' ' +json.vacancies[i].salaryFrom + ' - ' + json.vacancies[i].salaryTo + ']]></title>';
+			result += '<link>https://www.cv.lv/vacancy/' + json.vacancies[i].id + '</link>';
+			result += '<pubDate>' + json.vacancies[i].publishDate + '</pubDate>';
+			result += '<description><![CDATA[ '+json.vacancies[i].employerName+'<br/> ' + json.vacancies[i].positionContent + ' ]]></description>';
+			result += '</item>';
+		}
     }
     result += '</channel>';
     result += '</rss>';
