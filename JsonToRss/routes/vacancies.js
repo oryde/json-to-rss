@@ -19,7 +19,7 @@ router.get('/', async function (req, res) {
     result += '<ttl>5</ttl>';
 
     for (var i = 0; i < json.vacancies.length; i++) {
-		if (json.vacancies[i].salaryTo && json.vacancies[i].salaryTo >= 4000){
+		if (json.vacancies[i].salaryTo && json.vacancies[i].salaryTo > 4150){
 			result += '<item>';
 			result += '<title><![CDATA[ ' + json.vacancies[i].positionTitle + ' ' +json.vacancies[i].salaryFrom + ' - ' + json.vacancies[i].salaryTo + ']]></title>';
 			result += '<link>https://www.cv.lv/vacancy/' + json.vacancies[i].id + '</link>';
