@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="routes\cars.js" />
     <Content Include="routes\index.js" />
     <Content Include="routes\vacancies.js" />
     <Content Include="package.json" />
